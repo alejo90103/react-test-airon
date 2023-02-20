@@ -6,8 +6,9 @@ import './App.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
+
+import Item from "./Components/Item";
+import ModalAdd from "./Components/ModalAdd";
 
 const randomId = (prefix) => {
   return `${prefix}-${Math.random().toString(16).slice(-4)}`;
@@ -98,10 +99,10 @@ function App() {
         <Card.Body>
           <Card.Title className="text-black text-center mt-2 text-bold"><h3>This is a technical proof</h3></Card.Title>
           <Card.Subtitle className="mb-2 text-muted text-black text-center mt-1 mb-2">
-            <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
             numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-            optio, eaque rerum!.</small></p>
+            optio, eaque rerum!.</p>
           </Card.Subtitle>
           {
             list &&
@@ -109,9 +110,7 @@ function App() {
               {
                 list.map((e, i) => {
                   return (
-                    <Form.Label className={`px-2 m-0 mt-1 ${e.checked && "form-check-label"}`} onClick={() => handleSelectedItem(i)} onDoubleClick={() => handleDoubleClickDeleteItem(e.id)}>
-                      <p className="m-0 py-1">{e.name}</p>
-                    </Form.Label>
+                    <Item key={i} item={e} onClick={() => handleSelectedItem(i)} onDoubleClick={() => handleDoubleClickDeleteItem(e.id)} />
                   )
                 })
               }
@@ -121,53 +120,21 @@ function App() {
             <div>
               {
                 lastItemRemove.length > 0 &&
-                <Button size="sm" className="delete-button v-icon-button" onClick={handleRollbackList}>
-                  <i className="bi bi-arrow-counterclockwise"></i>
-                </Button>
+                <Button size="sm" className="delete-button v-icon-button" onClick={handleRollbackList}><i className="bi bi-arrow-counterclockwise"></i></Button>
               }
               {' '}
               {
                 showDelete &&
-                <Button id="delete" size="sm" className="delete-button v-button" onClick={handleDeleteItem}>
-                  DELETE
-                </Button>
+                <Button id="delete" size="sm" className="delete-button v-button" onClick={handleDeleteItem}>DELETE</Button>
               }
             </div>
             <div>
-              <Button size="sm" className="add-button v-button" onClick={handleShow}>
-                ADD
-              </Button>
+              <Button size="sm" className="add-button v-button" onClick={handleShow}>ADD</Button>
             </div>
           </div>
         </Card.Body>
       </Card>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="m-3">
-              <Form.Label>Add item to list</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Type the text here..."
-                autoFocus
-                className="rounded-0 list-group-bg"
-                onChange={(event) => setNewItem(event.target.value)}
-              />
-            </Form.Group>
-          </Form>
-          <Modal.Footer className="border-0">
-            {
-              newItem &&
-              <Button size="sm" className="add-button v-button" onClick={addItem}>
-                ADD
-              </Button>
-            }
-            <Button size="sm" className="delete-button v-button" onClick={handleClose}>
-              CANCEL
-            </Button>
-          </Modal.Footer>
-        </Modal.Body>
-      </Modal>
+      <ModalAdd show={show} newItem={newItem} setNewItem={setNewItem} addItem={addItem} handleClose={handleClose} />
     </div>
   );
 }
