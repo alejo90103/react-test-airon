@@ -51,7 +51,7 @@ function App() {
   }, [list]);
 
   const handleAddItem = () => {
-    let id = randomId("item");
+    const id = randomId("item");
     const updateList = [
       ...list, 
       {
