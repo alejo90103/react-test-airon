@@ -1,5 +1,36 @@
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url('./assets/font/Montserrat/static/Montserrat-Bold.woff2') format('woff2'),
+    url('./assets/font/Montserrat/static/Montserrat-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url('./assets/font/Montserrat/static/Montserrat-Regular.woff2') format('woff2'),
+    url('./assets/font/Montserrat/static/Montserrat-Regular.woff') format('woff');
+
+}
+
+@font-face {
+  font-family: "Montserrat-SemiBold";
+  src: url('./assets/font/Montserrat/static/Montserrat-SemiBold.woff2') format('woff2'),
+    url('./assets/font/Montserrat/static/Montserrat-SemiBold.woff') format('woff');
+}
+
+body {
+  font-family: "Montserrat-Regular";
+}
+
 .App {
-  text-align: center;
+  background-color: #A1C4FD;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: "Montserrat-Regular";
 }
 
 .App-logo {
@@ -13,26 +44,70 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
-  color: #61dafb;
+  color: #A1C4FD;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.v-card {
+  max-width: 40rem;
+}
+
+.list-group {
+  min-height: 170px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+p {
+  font-size: small;
+}
+
+.list-group, .list-group-item, .list-group-bg {
+  background-color: #F7F7F7 !important;
+}
+
+.v-button {
+  border-radius: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 100px;
+}
+
+.v-icon-button {
+  border-radius: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.add-button, .form-check-label {
+  background-color: #324BFF;
+}
+
+.delete-button, .delete-button:hover {
+  color: #324BFF;
+  background-color: transparent;
+}
+
+.form-label {
+  color: #333333;
+  width: 100%;
+}
+
+.form-check-label {
+  color: white;
+}
+
+.form-check {
+  padding-left: 0em;
+  padding-right: 0em;
 }
