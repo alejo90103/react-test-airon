@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import './App.css';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
+import "./App.css";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 
-import Item from "./Components/Item";
-import ModalAdd from "./Components/ModalAdd";
+import Item from "./components/Item";
+import ModalAdd from "./components/ModalAdd";
 
 const randomId = (prefix) => {
   return `${prefix}-${Math.random().toString(16).slice(-4)}`;
@@ -50,7 +50,7 @@ function App() {
     setShowDelete(isSeleted);
   }, [list]);
 
-  const addItem = () => {
+  const handleAddItem = () => {
     let id = randomId("item");
     const updateList = [
       ...list, 
@@ -134,7 +134,7 @@ function App() {
           </div>
         </Card.Body>
       </Card>
-      <ModalAdd show={show} newItem={newItem} setNewItem={setNewItem} addItem={addItem} handleClose={handleClose} />
+      <ModalAdd show={show} newItem={newItem} setNewItem={setNewItem} handleAddItem={handleAddItem} handleClose={handleClose} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const ModalAdd = ({ show, newItem, setNewItem, addItem, handleClose }) => {
+const ModalAdd = ({ show, newItem, setNewItem, handleAddItem, handleClose }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Body>
@@ -22,13 +22,9 @@ const ModalAdd = ({ show, newItem, setNewItem, addItem, handleClose }) => {
         <Modal.Footer className="border-0">
           {
             newItem &&
-            <Button size="sm" className="add-button v-button" onClick={addItem}>
-              ADD
-            </Button>
+            <Button size="sm" className="add-button v-button" onClick={handleAddItem}>ADD</Button>
           }
-          <Button size="sm" className="delete-button v-button" onClick={handleClose}>
-            CANCEL
-          </Button>
+          <Button size="sm" className="delete-button v-button" onClick={handleClose}>CANCEL</Button>
         </Modal.Footer>
       </Modal.Body>
     </Modal>
